@@ -1,11 +1,15 @@
 <launch>
 
+	<!-- Initializes Camera -->
 	<node name="camera_control" pkg="baxter_tools" type="camera_control.py" args="-o left_hand_camera -r 640x400"/>
 
+	<!-- Specifies gripper side -->
 	<arg name="gripper" default="left"/>
 
+	<!-- Initializes Gripper Action Server (required for gripper motion) -->
 	<node name="rsdk_gripper_action_server" pkg="baxter_interface" type="gripper_action_server.py" args="--gripper $(arg gripper)" required="true" />
 
+	<!-- Initializes arm motion node -->
 	<node pkg="BaxterRobot" type="move_arm_node.py" name="move_arm_node" output="screen" respawn="false" />
 
 </launch>
