@@ -10,7 +10,7 @@ import motion_planning_node as pnode
 import baxter_interface
 
 
-has_candy = True
+has_candy = None
 is_moving = False
 
 pickup={'left_w0': -0.12540292940963257, 'left_w1': -0.004985437560627594, 'left_w2': -0.13268933815208828, 'left_e0': 0.05253884198507542, 'left_e1': 2.0436459046603423, 'left_s0': 0.2017184736069319, 'left_s1': -0.5572185211993765}
@@ -47,20 +47,7 @@ def pickup():
 
 
 def arm_setup():
-	### TODO: figure out what values we want for default arm position
-    # Get desired joint values from parameter server
-    # left_w0 = rospy.get_param('left_w0',default =0)
-    # left_w1 = rospy.get_param('left_w1',default =0)
-    # left_w2 = rospy.get_param('left_w2',default =0)
-    # left_e0 = rospy.get_param('left_e0',default =0)
-    # left_e1 = rospy.get_param('left_e1',default =0)
-    # left_s0 = rospy.get_param('left_s0',default =0)
-    # left_s1 = rospy.get_param('left_s1',default =0)
-
-    # # Send the left arm to the desired position
-    # home = {'left_w0': left_w0, 'left_w1': left_w1, 'left_w2': left_w2, 'left_e0': left_e0, 'left_e1': left_e1, 'left_s0': left_s0, 'left_s1': left_s1}
-    limb = baxter_interface.Limb('left')
-    limb.move_to_neutral()
+    pickup()
 
 
 # Left out some stuff, we can add in if we need it - Daniel
